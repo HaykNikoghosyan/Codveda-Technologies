@@ -1,10 +1,14 @@
+from pathlib import Path
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report
 
-df = pd.read_csv('4) house Prediction Data Set.csv', sep=r'\s+', engine='python', header=None)
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR.parent / 'Data'
+
+df = pd.read_csv(DATA_DIR / '4) house Prediction Data Set.csv', sep=r'\s+', engine='python', header=None)
 
 median_price = df.iloc[:, 13].median()
 

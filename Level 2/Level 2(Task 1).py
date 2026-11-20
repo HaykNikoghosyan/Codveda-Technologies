@@ -1,3 +1,4 @@
+from pathlib import Path
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -5,7 +6,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
-df = pd.read_csv('4) house Prediction Data Set.csv', sep=r'\s+', header=None)
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR.parent / 'Data'
+
+df = pd.read_csv(DATA_DIR / '4) house Prediction Data Set.csv', sep=r'\s+', header=None)
 
 X = df.iloc[:, [5]]
 y =df.iloc[:, 13]
@@ -29,5 +33,5 @@ plt.title('House Price Prediction using Linear Regression', fontsize=14)
 plt.xlabel('Number of Rooms (RM)', fontsize=12)
 plt.ylabel('Median Value in $1000s (MEDV)', fontsize=12)
 plt.legend()
-plt.savefig('regression_analysis.png', dpi=300, bbox_inches='tight')
+plt.savefig(BASE_DIR / 'regression_analysis.png', dpi=300, bbox_inches='tight')
 plt.show()

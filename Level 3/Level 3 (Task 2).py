@@ -1,3 +1,4 @@
+from pathlib import Path
 
 import streamlit as st
 import pandas as pd
@@ -5,7 +6,10 @@ import plotly.express as px
 
 st.title("📊 Interactive Data Dashboard")
 
-df = pd.read_csv('1) iris.csv')
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR.parent / 'Data'
+
+df = pd.read_csv(DATA_DIR / '1) iris.csv')
 
 st.sidebar.header("Filter Options")
 columns = df.columns.tolist()

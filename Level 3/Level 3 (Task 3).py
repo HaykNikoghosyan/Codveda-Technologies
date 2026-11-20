@@ -1,10 +1,15 @@
+from pathlib import Path
+
 import pandas as pd
 import matplotlib.pyplot as plt
 from textblob import TextBlob
 from wordcloud import WordCloud
 import seaborn as sns
 
-df = pd.read_csv('3) Sentiment dataset.csv')
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR.parent / 'Data'
+
+df = pd.read_csv(DATA_DIR / '3) Sentiment dataset.csv')
 
 text_column = None
 max_len = 0
@@ -38,10 +43,10 @@ sns.countplot(x='Sentiment_Result', data=df, palette='pastel', hue='Sentiment_Re
 plt.title('Sentiment Distribution Analysis', fontsize=14)
 plt.xlabel('Sentiment', fontsize=12)
 plt.ylabel('Count', fontsize=12)
-plt.savefig('Sentiment_Distribution.png', dpi=300, bbox_inches='tight')
+plt.savefig(BASE_DIR / 'Sentiment_Distribution.png', dpi=300, bbox_inches='tight')
 plt.show()
 
-all_words = ''.join([str(text) for text in df[text_column]])
+all_words = ' '.join([str(text) for text in df[text_column]])
 
 if len(all_words.strip()) > 0:
     wordcloud = WordCloud(width=800, height=400, background_color='white', max_words=100, colormap='viridis').generate(all_words)
@@ -49,14 +54,7 @@ if len(all_words.strip()) > 0:
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis('off')
     plt.title('Most Common Words in Dataset', fontsize=16)
-    plt.savefig('wordcloud.png', dpi=300, bbox_inches='tight')
+    plt.savefig(BASE_DIR / 'wordcloud.png', dpi=300, bbox_inches='tight')
     plt.show()
 else:
     print('No Words Found')
-
-
-if len(all_words.strip()) > 0:
-    wordcloud = WorldCloud(width=800, height=400, background_color='white', max_words)
-    plt.figure(figsize=(10,5))
-    plt.imshow(wordcloud, interpolation=)
-    plt.axis()
