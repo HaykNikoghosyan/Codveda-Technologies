@@ -43,3 +43,6 @@ Scripts locate the `Data/` folder relative to their own location, so they can be
 - **Task 1: Classification Analysis** — Logistic regression predictive model evaluation (Precision, Recall, F1).
 - **Task 2: Streamlit Dashboard** — Interactive data dashboard for dataset analysis.
 - **Task 3: Sentiment Analysis (NLP)** — Natural Language Processing with TextBlob, sentiment classification, WordCloud chart.
+
+---
+**Author:** Hayk Nikoghosyan
